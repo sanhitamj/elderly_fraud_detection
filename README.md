@@ -14,9 +14,13 @@ The goal of this project is to understand the data and using data-science techni
 
 ## Ongoing Work
 
-Currently, I am working on making time-series of the expenses for a given person, in a given area, say personal needs or rent. The idea is to use each time-series as a point and do clustering analysis for anomalies in the expenses.
+Currently, I am working on working on multivariate time-series, made using expenses from different categories. These categories are for example 'Personal Needs', 'Miscellaneous Expenses', 'Rent', etc. The idea is to use each time-series as a point and perform clustering analysis for anomalies in the expenses.
 
-A plot below shows one such time-series for one person. 
+A plot below shows one such time-series for one person.
+
+![Timeseries for Personal Needs and Miscellaneous Expenses](images/ts_casefile\=4832.png)
+Format: ![Alt Text](url)
+
 
 
 ## Technologies used
@@ -30,7 +34,7 @@ A plot below shows one such time-series for one person.
   * datetime
 
 
-## References -
+## References
 
 * Signature-Based Methods for Data Streams - Corinna Cortes, Daryl Pregibon
 * Grouping Multivariate Time Series: A Case Study - T. Dasu, D. F. Swayne, D. Poole
