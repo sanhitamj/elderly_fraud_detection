@@ -6,7 +6,9 @@ For people whose cognitive abilities are compromised, either due to old age or s
 
 These data are from the year 2012 to 2015; the number of people (taken care of) is 9000+. There are different categories of expenses, ranging from rent/property tax, insurance to personal needs, or 'shopping' data.
 
-Currently, the state bureaucrats use red flags like, if the charitable donations are over $100 or if a single cash transaction is over certain amount. This is not a very clever way to handle such big dataset. For 9000+ people, there are more than 100,000 red flags. It is a waste of resources like accounts' time and in turn tax money.
+Currently, the state bureaucrats use red flags like, if the charitable donations are over $100 or if a single cash transaction is over certain amount. This is not a very clever way to handle such big dataset. For 9000+ people, there are more than 100,000 red flags. It is a waste of resources like accountants' time and in turn tax money.
+
+Although some of these cases might be investigated in detail, there is no information about that in the dataset. Hence the challenging part of the project is that these are unlabeled data, and this is going to be unsupervised learning.
 
 ## Goal
 
