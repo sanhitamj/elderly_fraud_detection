@@ -16,10 +16,9 @@ The goal of this project is to understand the data and using data-science techni
 
 Currently, I am working on working on multivariate time-series, made using expenses from different categories. These categories are for example 'Personal Needs', 'Miscellaneous Expenses', 'Rent', etc. The idea is to use each time-series as a point and perform clustering analysis for anomalies in the expenses.
 
-A plot below shows one such time-series for one person.
+A plot below shows one such time-series for one person, identified with a number, CaseFileID.
 
 ![Timeseries for Personal Needs and Miscellaneous Expenses](images/ts_casefile\=4832.png)
-Format: ![Alt Text](url)
 
 
 
