@@ -16,6 +16,23 @@ The goal of this project is to understand the data and using data-science techni
 
 ## Ongoing Work
 
+Relevant information for this project is contained in one table. Only these columns are used to model the data-
+  * CaseFileID (Unique ID for individuals taken care of)
+  * Transation date
+    * This column is transformed into, duration. This is basically for how long the individual is on the database.
+  * Amount (in USD)
+  * Transaction Category for the given transaction. This column is used in multiple ways;
+    * How many categories are expenses made
+    * How much money has been spent under each category
+
+A linear model is fit to these features to predict the total amount spent.
+
+Further work -
+* Find outliers
+* Divide people into two income/expenditure groups and fit a model.
+
+
+
 Currently, I am working on working on multivariate time-series, made using expenses from different categories. These categories are for example 'Personal Needs', 'Miscellaneous Expenses', 'Rent', etc. The idea is to use each time-series as a point and perform clustering analysis for anomalies in the expenses.
 
 A plot below shows one such time-series for one person, identified with a number, CaseFileID.

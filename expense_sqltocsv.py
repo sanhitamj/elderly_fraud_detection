@@ -82,4 +82,12 @@ columns_to_keep = ['IncExpId', 'CasFil', 'Amount', 'TranDt', 'TranCat', 'TranDes
 df = df[(df['Expense']==1) & (df['TranDt']> datetime.date(year=2010,month=1,day=1))
         & (df['TranDt']<datetime.date(2016, 1, 1))][columns_to_keep]
 
+df['NoDays'] = (df['TranDt'] - df['TranDt'].min())/ np.timedelta64(1,'D')
+
 df.to_csv('expense.csv')
+
+'''
+For feature engineering
+'''
+
+df['TranDt'] = pd.to_datetime(df['TranDt'])
