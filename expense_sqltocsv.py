@@ -66,7 +66,6 @@ del df['TrustName']
 del df['IsIncome']
 del df['IsExpense']
 
-
 # Remove transactions which are either 'Transfer to Trust' (id=245) or 'CAAP Audit
 # Expense Adjustment' (id=249)
 
