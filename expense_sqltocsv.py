@@ -82,7 +82,7 @@ df['TranDescr'] = df['TranCat'].map(d_tran)
 
 df = df[(df['TranCat']!= 245) & (df['TranCat']!= 249)]
 
-columns_to_keep = ['IncExpId', 'CasFil', 'Amount', 'TranDt', 'TranCat', 'TranDescr', 'CourtOrdTran', 'CarFac' ]
+columns_to_keep = ['IncExpId', 'CasFil', 'Expense', 'Amount', 'TranDt', 'TranCat', 'TranDescr', 'CourtOrdTran', 'CarFac' ]
 
 # Use only those transactions where money is spent, Expense == 1, and not Expense==0
 # Use the data for which datetime information is sensible
@@ -116,5 +116,6 @@ df_piv.fillna(0, inplace=True)
 # Add more columns to this pivot dataframe
 df_piv['CasFil'] = df_piv.index
 df_piv = pd.merge(df_piv, explore, how='outer', left_on='CasFil', right_on='CasFil')
-del df_piv[df_piv.columns.tolist()[-5]]
+del df_piv[df_piv.columns.tolist()[-4]]
+# del df_piv[df_piv.columns.tolist()[0]]
 df_piv.to_csv('expense_matrix.csv')
