@@ -1,39 +1,45 @@
+# Elderly Fraud Detection - Project Logs
+
+### Previous Red Flags: Reasons and Counts
 SQL table - ReportFlags has 37 reasons.
 Table - FlaggedReports has 194995 entries.
 df3['ReportReason'].value_counts()
-Cash Transaction                                  40458
-Transfers Between Accounts                        32630
-New Substantial Expense                           24039
-Conservator Fees                                  15620
-Unexpected Expense Transaction                    13451
-Large Transaction                                 11016
-Large Expense                                      7416
-Bank And Other Fees                                6834
-Prior Year Income Change                           5377
-Prior Year Expense Change                          5312
-Prior Year Income and Expense Change               5274
-Misc Transaction Percentage                        4165
-Gifts Given                                        3409
-Missing Income Transaction                         3280
-Late Annual Report                                 3269
-Excessive Charitable Contributions                 2646
-Substandard Living Arrangements                    2174
-Prior Year Account Value Change                    1852
-Number of Accounts                                 1401
-Unprotected Assets                                 1288
-Any Debt                                           1032
-Closed Account With Balance                         705
-Disposed Personal Property                          555
-Large Estate                                        523
-Misc Transaction Count                              445
-Missing Expense Transactions                        338
-Disposed Personal Property With Financial Loss      299
-Loan Or Debt Increase                               127
-Round Transaction Numbers                            50
-Late Charges                                         11
+
+|Reason | Count of red flags|
+| --- | --- |
+|Cash Transaction                                 | 40458|
+|Transfers Between Accounts                       | 32630|
+|New Substantial Expense                          | 24039|
+|Conservator Fees                                 | 15620|
+|Unexpected Expense Transaction                   | 13451|
+|Large Transaction                                | 11016|
+|Large Expense                                    |  7416|
+|Bank And Other Fees                              |  6834|
+|Prior Year Income Change                         |  5377|
+|Prior Year Expense Change                        |  5312|
+|Prior Year Income and Expense Change             |  5274|
+|Misc Transaction Percentage                      |  4165|
+|Gifts Given                                      |  3409|
+|Missing Income Transaction                       |  3280|
+|Late Annual Report                               |  3269|
+|Excessive Charitable Contributions               |  2646|
+|Substandard Living Arrangements                  |  2174|
+|Prior Year Account Value Change                  |  1852|
+|Number of Accounts                               |  1401|
+|Unprotected Assets                               |  1288|
+|Any Debt                                         |  1032|
+|Closed Account With Balance                      |   705|
+|Disposed Personal Property                       |   555|
+|Large Estate                                     |   523|
+|Misc Transaction Count                           |   445|
+|Missing Expense Transactions                     |   338|
+|Disposed Personal Property With Financial Loss   |   299|
+|Loan Or Debt Increase                            |   127|
+|Round Transaction Numbers                        |    50|
+|Late Charges                                     |    11|
 
 
-Top type of expenses -
+# Top type of expenses from the ConservatorDatabase -
 
 |ID | Expense Description | Unique no of persons | Total inputs |
 |---| --------------------|----------------------| --- |  
@@ -44,42 +50,62 @@ Top type of expenses -
 |233 | Utilities (Phone, Cable, Internet) | | 43694|
 |187 | Clothing | | |
 |183 | Bank Service Charges| | |
-210 - Doctor / Hospital
-228 - Transfer to
-206 - Med Insurance
-185 - Care Facility
-193 - Conservator/Guardian Fees
-197 - Food - Groceries
-191 - Fees - Attorney
-194 - Other Fees
-232 - Utilities - Gas & Electric
-196 - Food - Dining Out
-221 - Services - Personal Care
-190 - Fees - Accountant
-199 - Gifts Given
-189 - Entertainment
-203 - Household - Other Household
-178 - Wages
-209 - Medical - Dental   
-184 - Bond Premium
-202 - Household - Maintenance/Repairs
-222 - Subscriptions & Dues
-229 - Transportation
-207 - Insurance - Other Insurance
-205 - Insurance - Home/Renter  
-226 - Taxes - Real Estate
-179 - Asset Depreciation
-204 - Insurance - Auto
-227 - State Taxes
-212 - Medical: Equipment
-224 - Federal Taxes
-230 - Travel
-234 - Utilities - Water/Sewer
-186 - Charitable Donation
-180 - Automobile - Gasoline
-181 - Automobile - Maintenance
-200 - Hobby
-192 - Fees - Court
+|210 | Doctor / Hospital | |  |
+|228 | Transfer to  |  |  |
+|206 | Med Insurance  |  |  |
+|185 | Care Facility  |  |  |
+|193 | Conservator/Guardian Fees  |  |  |
+|197 | Food - Groceries  |  |  |
+|191 | Fees - Attorney  |  |  |
+|194 | Other Fees  |  |  |
+|232 | Utilities - Gas & Electric  |  |  |
+|196 | Food - Dining Out  |  |  |
+|221 | Services - Personal Care  |  |  |
+|190 | Fees - Accountant  |  |  |
+|199 | Gifts Given  |  |  |
+|189 | Entertainment  |  |  |
+|203 | Household - Other Household  |  |  |
+|178 | Wages  |  |  |
+|209 | Medical - Dental     |  |  |
+|184 | Bond Premium  |  |  |
+|202 | Household - Maintenance/Repairs  |  |  |  
+|222 | Subscriptions & Dues  |  |  |
+|229 | Transportation  |  |  |
+|207 | Insurance - Other Insurance  |  |  |
+|205 | Insurance - Home/Renter    |  |  |
+|226 | Taxes - Real Estate  |  |  |
+|179 | Asset Depreciation  |  |  |
+|204 | Insurance - Auto  |  |  |
+|227 | State Taxes  |  |  |
+|212 | Medical: Equipment  |  |  |
+|224 | Federal Taxes  |  |  |
+|230 | Travel  |  |  |
+|234 | Utilities - Water/Sewer  |  |  |
+|186 | Charitable Donation  |  |  |
+|180 | Automobile - Gasoline  |  |  |
+|181 | Automobile - Maintenance  |  |  |
+|200 | Hobby  |  |  |
+|192 | Fees - Court  |  |  |
+
+### Some of these expenses can be clumped together
+
+|Description | Transaction ID |
+| -- | -- |
+|Fees - Attorney | 191 |
+|Fees - Court | 192 |
+| -- | -- |
+| Automobile - Gasoline | 180|
+| Automobile - Maintenance | 181 |
+| Automobile - Payment | 182 |
+| Insurance - Auto | 204 |
+| -- | -- |
+| Household - Laundry, dry cleaning | 201 |
+| Household - Maintenance, Repairs | 202 |
+| Household - Other Household | 203 |
+| Fees - Realtor/Appraiser | 195 |
+| Services - Cleaning | 220 |
+|  Taxes - Real Estate| 226 |
+| Home or Renter Insurance | 205 |
 
 
 For CaseFileReportId 9423 -
@@ -99,4 +125,4 @@ For CaseFileReportId 13550 -
 
 Similar case for this person, with last entry of expenses is on 2014-04-30'; is for Asset Depreciation; the last entry for care facility is on 2014-03-11.
 
-Number of people who live in a care facility, even for part of the time the data were collected, is 2414. 
+Number of people who live in a care facility, even for part of the time the data were collected, is 2414.
