@@ -1,4 +1,14 @@
-# Elderly Fraud Detection - Project Logs
+# Elderly Financial Fraud Detection - Unsupervised Learning
+
+
+The goal of this project is find outliers from the given data; this information can be supplied to the state accountants to look carefully into each case, individually; also to help people budget their income well.
+
+
+The data are expense transactions of the people, whose cognitive abilities are compromised. A 'conservator' or a 'guardian' takes care of their financial transactions. These conservators are either professionals or family members, friends, etc.
+
+Currently, only the state of Minnesota keeps digital records of the transactions. The data were collected between 2011 and 2015. It came in as a SQL (MS-SQL Express 2012) file; with 88 tables in all. Only a handful of those tables were useful in this project.
+
+'IncomeExpenseTable' is the table that contains information for transactions for the people that are cared for.
 
 ### Previous Red Flags: Reasons and Counts
 SQL table - ReportFlags has 37 reasons.
@@ -111,7 +121,7 @@ df3['ReportReason'].value_counts()
 For CaseFileReportId 9423 -
 
 | IncExpId |	CasFil	| Expense	| Amount |	TranDt	| TranCat	| TranDescr |	CourtOrdTran |	CarFac |	NumDays |
-| - | -   |-|-|-|-|-|-|-|-|-|
+|-| ----|-|-|-|-|-|-|-|-|-|
 |194493|	9423	|1	|4883.54	|2013-06-28	|226|	Taxes - Real Estate|	0	|1	|1271.0|
 
 The person livd in a care facility but still paying Real Estate Taxes. The last entry for this person is on - '2014-05-06'; it's for the care facility. There is no entry for this person, of selling a house. But probably the person died within a year of paying the real estate taxes, mentioned above.
