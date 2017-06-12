@@ -1,0 +1,51 @@
+ 199: 'Asset Depreciation',
+ 200: 'Automobile - Gasoline',
+ 201: 'Automobile - Maintenance',
+ 202: 'Automobile - Payment',
+ 203: 'Bank Service Charges',
+ 204: 'Bond Premium',
+ 205: 'Care Facility',
+ 206: 'Charitable Donation',
+ 207: 'Clothing',
+ 208: 'Education',
+ 209: 'Entertainment',
+ 210: 'Fees - Accountant',
+ 212: 'Fees - Attorney',
+ 213: 'Fees - Court',
+ 214: 'Fees - Guardian/Conservator',
+ 216: 'Fees - Other Fees',
+ 217: 'Fees - Realtor/Appraiser',
+ 220: 'Food - Dining Out',
+ 221: 'Food - Groceries',
+ 222: 'Funeral',
+ 223: 'Gifts Given',
+ 224: 'Hobby',
+ 225: 'Household - Laundry/Dry Cleaning',
+ 226: 'Household - Maintenance/Repairs',
+ 227: 'Household - Other Household',
+ 229: 'Insurance - Auto',
+ 230: 'Insurance - Home/Renter',
+ 231: 'Insurance - Medical',
+ 232: 'Insurance - Other Insurance',
+ 233: 'Medical - Ambulance/Transport',
+ 234: 'Medical - Dental',
+ 236: 'Medical - Doctor/Hospital',
+ 238: 'Medical: Equipment',
+ 239: 'Miscellaneous Expense',
+ 240: 'Personal Needs',
+ 250: 'Personal Property - Purchase',
+
+expense_collect = {}
+expense_collect['Automobile'] = {'Automobile - Gasoline', 'Automobile - Maintenance', 'Automobile - Payment', 'Insurance - Auto'}
+expense_collect['Taxes'] = {}
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+expense_collect[] =
+
