@@ -1,3 +1,8 @@
 *.csv
 *.bak
 *.sql
+Collecting*.ipynb
+linear*model.ipynb
+outlier_detection_algorithm.ipynb
+PersonalNeeds.ipynb
+PlottingOutliers.ipynb
