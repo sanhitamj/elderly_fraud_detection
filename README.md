@@ -65,31 +65,54 @@ Using these two ideas, some plots were made. For example, here is a plot for Per
 
 ![Personal Needs and Miscellaneous Expenses](images/PersonalMisc.png)
 
-## Ongoing Work
+## Finding outliers
 
-Relevant information for this project is contained in one table. Only these columns are used to model the data-
-  * CaseFileID (Unique ID for individuals taken care of)
-  * Transation date
-    * This column is transformed into, duration. This is basically for how long the individual is on the database.
-  * Amount (in USD)
-  * Transaction Category for the given transaction. This column is used in multiple ways;
-    * How many categories are expenses made
-    * How much money has been spent under each category
+From the figure above, one can easily see some outliers. The colours would help too. But to suspect someone for fraud we need something more robust that looking at the plot. Also, there are big numbers on the X-axis (money spent) and small numbers on Y-axis (number of transactions). Also, it would be useful to use one same method on all sorts of people - rich, middle-class, poor, etc. That's desirable because if there is more data, it's easier to point outliers.
 
-A linear model is fit to these features to predict the total amount spent.
+(This is just like looking at faint objects in the sky. Point a telescope at a faint object for a long time; that will increase signal-to-noise ratio.)
 
-Further work -
-* Find outliers
-* Divide people into two income/expenditure groups and fit a model.
+From the plot, it is obvious that a large number of people are close to origin of this plot and they are probably not being cheated for money. There is a big density of people in that region. An outlier - someone who doesn't have a lot of neighbours - is someone who is potentially being defrauded by their conservator.
+
+#### Outlier Quantification
+
+For each of the spending category, such plots (and data) were made. Outliers were detected in each category individually. To quantify that -
+
+1. Distance between each pair of points (people) is measured; the space here is defined by the money they've spent in that category and the number of transactions they've made in that category.
+
+2. A median distance is found from the calculation in step 1.
+
+3. Number of points (individuals) within median distance were found.
+
+4. People were ranked using the number of neighbours. The ranks were calculated as follows -
+  * If there is no data for a person in that category, their rank is 0.
+  * For the rest of the people, rank = 1 - number of neighbours/maximum number of neighbours in the category.
+
+  This means lower the rank, lower is the probability of being defrauded.
+
+5. Ranks from the expense categories were collected together. People who have high ranks in multiple categories are potentially being cheated more, than someone who is an outlier in only one or fewer categories.
+
+Using this metric, collected_rank, we can quantify the worst outliers and the people slightly better off than them.
+
+![Personal Needs and Miscellaneous Expenses](images/outliers.png)
+
+This plot above is similar to the one above. X-axis is total spending of person across all the categories; Y-axis is the total number of transactions, again across all categories. Red and green colours indicate rank across all spending categories. Half the people are considered outliers, or median rank is used to divide 'normal' from an 'outlier'.
+
+**Interpretation of the plot**
+
+1. Most of the green points are close to the origin; but some red points are bleeding into the green cloud. That means, these points/people were outliers in more than one category; so that even if they are in the 'normal spending pattern' area, they get labeled red.
+
+2. The fact that there are a not a lot of red points close to X-axis implies that people who spend a lot of money in a single transaction are not outliers in (many) other categories; the algorithm is "liberal" to consider very few big-ticket spendings per person as necessary evils; but ...
+
+3. ... there are quite a few red points close to Y-axis. That means these people spend not a whole lot of money (possibly because they don't have a lot of money), but spend it more regularly than others. This implies that the kind of algorithm used here to find outliers gives more importance to not-so-rich people's transactions.
+
+This is indeed a big step, given that the bureaucrats do not look into accounts where monthly income (jargon - estate) is less than 3000 dollars.
 
 
+## Getting back to the goal of the project
 
-Currently, I am working on working on multivariate time-series, made using expenses from different categories. These categories are for example 'Personal Needs', 'Miscellaneous Expenses', 'Rent', etc. The idea is to use each time-series as a point and perform clustering analysis for anomalies in the expenses.
-
-A plot below shows one such time-series for one person, identified with a number, CaseFileID.
-
-![Timeseries for Personal Needs and Miscellaneous Expenses](images/ts_casefile\=4832.png)
-
+Now that we have a regular spending pattern, it can be used
+  * to inform state about outliers; (they may or may not take this seriously)
+  * to help people budgeting better
 
 
 ## Technologies used
@@ -103,7 +126,8 @@ A plot below shows one such time-series for one person, identified with a number
   * datetime
 
 
-## References
+## Thanks
 
-* Signature-Based Methods for Data Streams - Corinna Cortes, Daryl Pregibon
-* Grouping Multivariate Time Series: A Case Study - T. Dasu, D. F. Swayne, D. Poole
+* Mr Michael Curran of Guide Change for suggesting the project and providing the data.
+* Dr Scott Schwartz for very useful brainstorming.
+* The State of Minnesota for providing the data.
