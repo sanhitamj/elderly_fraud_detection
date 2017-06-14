@@ -13,7 +13,9 @@ Currently, only the state of Minnesota keeps digital records of the transactions
 ### Previous Red Flags: Reasons and Counts
 SQL table - ReportFlags has 37 reasons.
 Table - FlaggedReports has 194995 entries.
+```Python
 df3['ReportReason'].value_counts()
+```
 
 |Reason | Count of red flags|
 | --- | --- |
