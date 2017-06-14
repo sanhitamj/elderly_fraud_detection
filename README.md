@@ -61,7 +61,9 @@ There are two assumptions in feature engineering
 
   To catch that sort of transactions, I used another feature - number of transactions in a given length of time.
 
-Using these two ideas, some plots were made.
+Using these two ideas, some plots were made. For example, here is a plot for Personal and Miscellaneous Expenses added together -
+
+![Personal Needs and Miscellaneous Expenses](images/PersonalMisc.png)
 
 ## Ongoing Work
 
