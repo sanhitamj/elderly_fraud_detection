@@ -2,15 +2,16 @@
 
 ## Background
 
-For people whose cognitive abilities are compromised, either due to old age or some sort of mental disorder, there are conservators to handle their finances, make transactions on their behalf. In the US, only the state of Minnesota keeps digital record of these transactions. The data for this project is provided by the State of Minnesota and Mr Michael Curran of Guide Change.
+When a person's cognitive abilities are compromised the court may appoint a conservator to handle their finances, make transactions on their behalf. In the US, Minnesota keeps a digital record of these transactions. The data for this project is a test set of data from the State of Minnesota, provided by Mr Michael Curran of [Guide Change](https://guidechange.com/). The idea is to identify people who may have been defrauded and find patterns from their data to help the vulnerable population.
+
 
 These data are from the year 2012 to 2015; the number of people (taken care of) is 9125.
 
 ## Goal
 
-The goal of this project is to understand the data, and using data-science techniques raise reasonable red flags. It may not be possible to get back to those particular cases, but the idea is to alert the state about how low-level cheating, frauds happen.
+The goal of this project is to understand the data, and using data-science techniques raise reasonable red flags. It may not be possible to get back to those particular cases, but the idea is to learn the pattern and alert authorities about how low-level cheating, frauds happen.
 
-Currently, the state bureaucrats use red flags like, if the charitable donations are over $100 or if a single cash transaction is over certain amount. This is not a very clever way to handle such big dataset. For 9000+ people, there are almost 200,000 red flags. It is a waste of resources like accountants' time and in turn tax-payers' money.
+Previously, the state government used red flags like, if the charitable donations are over $100 or if a single cash transaction is over certain amount. This is not a very clever way to handle such a big and varied dataset. For 9000+ people, there are almost 200,000 red flags. It is a waste of resources like accountants' time and in turn tax-payers' money.
 
 The other part of the system is that the bureaucrats do not look into the cases for whom monthly income (Estate) is less than $3000. So it is important to find outliers within low-income people too.
 
@@ -19,15 +20,17 @@ Although some of these cases might be investigated in detail, there is no inform
 
 ## Data
 
-The data are provided by Mr Michael Curran of Guide Change; the data in turn came from the state of Minnesota. It is in MSSQL format. (If you are looking ways to read MSSQL tables in Python, find the jupyter notebook - DataPipeline.ipynb - within this project.)
+The data are provided by Michael Curran of Guide Change; the data in turn came from a test dataset the state of Minnesota provided for such analyses.
 
-The most important table for this project is -IncomeExpenseTable. The information used from this table has format :
+It is in MSSQL format. (If you are looking ways to read MSSQL tables in Python, find the jupyter notebook - DataPipeline.ipynb - within this project.)
+
+The most important table for this project is - *IncomeExpenseTable*. The information used from this table has format :
 
 | CaseFileID | Transaction Date | Amount | Transaction Category |
 | ---------- | ---------------- | ------ | -------------------- |
 | 22208      |  2014-10-27      | 7.36	 | 197 |
 
-There are data for 9125 unique individuals (being taken care of by conservators or guardians); 56 unique categories for expenses; and information of 785478 expense transactions in all.
+There are data for 9125 unique individuals (being taken care of by conservators or guardians); 56 unique categories for expenses; and 785478 expense transactions in all.
 
 There are income transactions and a lot more redundant information in this table and other SQL tables too.
 
@@ -35,7 +38,7 @@ There are income transactions and a lot more redundant information in this table
 
 To begin with, this was the most difficult part of the project.
 
-**A paragraph that only Data Scientist and Machine-Learning people would find interersting**
+**A paragraph that only Data Scientist and Machine-Learning people would find interesting**
 
 The was Data-Science, Machine-Learning is taught, we expect a nice, clean X or feature matrix to work with. That is irrespective of whether it is supervised or unsupervised learning. To make a feature matrix like that was a difficult job; how to select features to use, or how to condense information and yet lose nothing important was the challenge. The important lesson is - get hands dirty with data to learn something important.
 
@@ -43,7 +46,7 @@ The was Data-Science, Machine-Learning is taught, we expect a nice, clean X or f
 
 A simple idea to begin with -
 
-Rather than dealing with 56 categories of expense, I uesd another SQL table for description of the expenses. Related expenses, for example - different utilities - gas-electricity, cable-phone-internet, water, sewage - were considered as just one type of expense.
+Rather than dealing with 56 categories of expense, I used another SQL table for description of the expenses. Related expenses, for example - different utilities - gas-electricity, cable-phone-internet, water, sewage - were considered as just one type of expense.
 
 The database has information about when the transaction was made. Since different people are on the database for different periods and different length of time, an idea to deal with time-series was dropped. But time information was used in another way.
 
@@ -105,14 +108,14 @@ This plot above is similar to the one above. X-axis is total spending of person 
 
 3. ... there are quite a few red points close to Y-axis. That means these people spend not a whole lot of money (possibly because they don't have a lot of money), but spend it more regularly than others. This implies that the kind of algorithm used here to find outliers gives more importance to not-so-rich people's transactions.
 
-This is indeed a big step, given that the bureaucrats do not look into accounts where monthly income (jargon - estate) is less than 3000 dollars.
+This is indeed a big step, given that the government does not look into accounts where the value of a person's accounts (jargon - estate) is less than 3000 dollars.
 
 
 ## Getting back to the goal of the project
 
 Now that we have a regular spending pattern, it can be used
-  * to inform state about outliers; (they may or may not take this seriously)
-  * to help people budgeting better
+  * to inform authorities about outliers; (they may or may not take this seriously)
+  * to help people budget better
 
 
 ## Technologies used
@@ -128,6 +131,6 @@ Now that we have a regular spending pattern, it can be used
 
 ## Thanks
 
-* Mr Michael Curran of Guide Change for suggesting the project and providing the data.
+* Michael Curran of Guide Change for suggesting the project and providing the data.
 * Dr Scott Schwartz for very useful brainstorming.
-* The State of Minnesota for providing the data.
+* The State of Minnesota for providing the test dataset for analysis.
