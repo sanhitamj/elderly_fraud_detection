@@ -1,0 +1,28 @@
+import pandas as pd
+from bokeh.plotting import figure, output_file, show
+from bokeh.io import output_notebook, push_notebook
+
+# output_file("outliers.html")
+TOOLS="resize,crosshair,pan,wheel_zoom,box_zoom,reset,box_select,lasso_select"
+
+df = pd.read_csv('rank.csv', index_col=0)
+x = df['AverageExpense'] 
+y = df['CountPerDay'] 
+
+p = figure(tools = TOOLS, title="Marking outliers", x_axis_label='Total Expense', 
+           y_axis_label='Total Number of Transactions')
+
+x_norm = x.min()/x.max()
+y_norm = y.min()/y.max()
+
+radii = df['Rank'] * x.median() +1000
+
+threshold= 0.35
+
+colors = [ 'rgba' + str((204, 102, 0, 0.5)) if r < threshold else 'rgba' + str((0, 206, 209, 0.5)) for r in df['Rank']]
+
+# [ unicode(x.strip()) if x is not None else '' for x in row ]
+
+p.circle(x, y, radius=radii, fill_color=colors, fill_alpha=1, line_color=None)
+
+show(p)
