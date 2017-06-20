@@ -10,20 +10,21 @@ from bokeh.plotting import figure, output_file, show, ColumnDataSource
 from bokeh.io import curdoc
 from bokeh.models.widgets import Slider
 from bokeh.layouts import column, layout
+from bokeh.embed import components
 
 def update_slider(attrname, old, new):
    threshold=slider_threshold.value
-   colors = [ 'rgba' + str((25, 10, 255, 0.4)) if r < threshold else 'rgba' + str((255, 26, 10, 0.4)) for r in df['Rank']]
+   colors = [ 'rgba' + str((25, 10, 255, 0.2)) if r < threshold else 'rgba' + str((255, 26, 10, 0.8)) for r in df['Rank']]
    color_source.data['fill_color']=colors
 
 output_file('outliers.html')
 df = pd.read_csv('rank.csv', index_col=0)
-threshold_init = 0.31
+threshold_init = 0.762
 
 x = df['Total Expense']
 y = df['Counts']
 radii = df['Rank'] * x.median() + 5000
-colors = [ 'rgba' + str((25, 10, 255, 0.4)) if r < threshold_init else 'rgba' + str((255, 26, 10, 0.4)) for r in df['Rank']]
+colors = [ 'rgba' + str((25, 10, 255, 0.2)) if r < threshold_init else 'rgba' + str((255, 26, 10, 0.8)) for r in df['Rank']]
 
 slider_threshold = Slider(start=0, end=1, step=0.001, value=threshold_init, title="Rank")
 

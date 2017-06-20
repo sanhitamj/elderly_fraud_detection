@@ -9,3 +9,6 @@ PlottingOutliers.ipynb
 expense_adding.txt
 *checkpoint*
 #*
+bokeh.ipynb
+*~
+*.html
