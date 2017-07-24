@@ -11,7 +11,7 @@ These data are from the year 2012 to 2015; the number of people (taken care of) 
 
 The goal of this project is to understand the data, and using data-science techniques raise reasonable red flags. It may not be possible to get back to those particular cases, but the idea is to learn the pattern and alert authorities about how low-level cheating, frauds happen.
 
-Previously, the state government used red flags like, if the charitable donations are over $100 or if a single cash transaction is over certain amount. This is not a very clever way to handle such a big and varied dataset. For 9000+ people, there are almost 200,000 red flags. It is a waste of resources like accountants' time and in turn tax-payers' money.
+Previously, the state government used red flags like, if the charitable donations are over $100 or if a single cash transaction is over certain amount. This is not a very clever way to handle such a big and varied dataset and there are too many red flags. It is a waste of resources like accountants' time and in turn tax-payers' money.
 
 The other part of the system is that the bureaucrats do not look into the cases for whom monthly income (Estate) is less than $3000. So it is important to find outliers within low-income people too.
 
@@ -30,7 +30,18 @@ The most important table for this project is - *IncomeExpenseTable*. The informa
 | ---------- | ---------------- | ------ | -------------------- |
 | 22208      |  2014-10-27      | 7.36	 | 197 |
 
-There are data for 9125 unique individuals (being taken care of by conservators or guardians); 56 unique categories for expenses; and 785478 expense transactions in all.
+There are data for 9125 unique individuals (being taken care of by conservators or guardians); 56 unique categories for expenses; and 785478 expense transactions in all. Here is another way to look at the data -
+
+Histogram of duration these individuals have spent on the database -
+
+![Duration Hisogram](images/duration_hist.png)
+
+Here is another overview of transactions. Below are two pie-charts, first is of number of transactions-
+
+![Transaction Numbers](images/transaction_cat_pie.png)
+
+And the next is the pie-chart of total dollar amount spent in each transaction category-
+![Transaction Numbers](images/expense_cat_pie.png)
 
 There are income transactions and a lot more redundant information in this table and other SQL tables too.
 
